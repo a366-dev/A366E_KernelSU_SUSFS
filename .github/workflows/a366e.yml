@@ -97,5 +97,5 @@ jobs:
         if: inputs.ksu-next == 'true'
         uses: ./.github/actions/ksu-next
 
-      - name: Build
-        uses: ./.github/actions/build
+      - name: Build Kernel
+        uses: ./.github/actions/build_kernel
