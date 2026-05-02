@@ -85,7 +85,7 @@ jobs:
       - name: Clone kernel
         uses: ./.github/actions/clone_kernel
         with:
-          kernel_branch: ${{ inputs.kernel_branch }}
+          branch: ${{ inputs.branch }}
 
       - name: Setup environment variables
         uses: ./.github/actions/env
