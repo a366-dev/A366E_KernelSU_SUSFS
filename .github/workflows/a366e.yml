@@ -72,7 +72,7 @@ jobs:
         # swap-space-path: /mnt/swapfile   # optional
 
       - name: Setup dependencies
-        uses: ./.github/actions/dependencies.yml
+        uses: ./.github/actions/dependencies
         with:
           clang_version: ${{ inputs.clang_version }}
           branch: ${{ inputs.branch }}
@@ -80,19 +80,19 @@ jobs:
           susfs: ${{ inputs.susfs }}
 
       - name: Clone kernel
-        uses: ./.github/actions/clone_kernel.yml
+        uses: ./.github/actions/clone_kernel
         with:
           kernel_branch: ${{ inputs.kernel_branch }}
 
       - name: Setup environment variables
-        uses: ./.github/actions/env.yml
+        uses: ./.github/actions/env
         with:
           susfs: ${{ inputs.susfs }}
           zeromount: ${{ inputs.zeromount }}
 
       - name: Add KernelSU-Next
         if: inputs.ksu-next == 'true'
-        uses: ./.github/actions/ksu-next.yml
+        uses: ./.github/actions/ksu-next
 
       - name: Build
-        uses: ./.github/actions/build.yml
+        uses: ./.github/actions/build
