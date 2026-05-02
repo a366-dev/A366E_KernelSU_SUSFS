@@ -17,8 +17,8 @@ on:
           - Release
         default: Actions
       
-      ksu:
-        description: "Build with KSU?"
+      ksu-next:
+        description: "Build with KSU-Next?"
         required: true
         type: choice
         options:
@@ -110,7 +110,7 @@ jobs:
       branch: ${{ matrix.branch }}
       version: ${{ matrix.android_version }}
       
-      ksu: ${{ inputs.ksu }}
+      ksu-next: ${{ inputs.ksu-next }}
       susfs: ${{ inputs.susfs }}
       bbg: ${{ inputs.bbg }}
       zeromount: ${{ inputs.zeromount }}

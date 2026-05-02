@@ -18,7 +18,7 @@ on:
         required: true
         type: string
 
-      ksu:
+      ksu-next:
         required: true
         type: string
       susfs:
@@ -89,3 +89,7 @@ jobs:
         with:
           susfs: ${{ inputs.susfs }}
           zeromount: ${{ inputs.zeromount }}
+
+      - name: Add KernelSU-Next
+        if: inputs.ksu-next == 'true'
+        uses: ./.github/actions/ksu-next.yml
