@@ -17,33 +17,32 @@ inputs:
 
 runs:
   using: composite
+  steps:
+    - name: Clone SUSFS and change commit if necessary, clone kernel patches
+      shell: bash
+      run: |
+        curl -L https://github.com/a366-dev/clang/releases/download/${{ inputs.clang_version }}/clang.tar.xz -o clang.tar.xz
+        tar -xJf clang.tar.xz
+        rm clang.tar.xz
 
-steps:
-  - name: Clone SUSFS and change commit if necessary, clone kernel patches
-    shell: bash
-    run: |
-      curl -L https://github.com/a366-dev/clang/releases/download/${{ inputs.clang_version }}/clang.tar.xz -o clang.tar.xz
-      tar -xJf clang.tar.xz
-      rm clang.tar.xz
-      
-      git clone https://github.com/WildKernels/kernel_patches.git
-      if [[ ${{ inputs.zeromount }} == 'true' ]]; then
-      git clone https://github.com/jimsterino98/Super-Builders.git
-      fi
+        git clone https://github.com/WildKernels/kernel_patches.git
+        if [[ ${{ inputs.zeromount }} == 'true' ]]; then
+        git clone https://github.com/jimsterino98/Super-Builders.git
+        fi
 
-      if [[ ${{ inputs.susfs }} == 'true' ]]; then
-      SUSFS_BRANCH="gki-$(echo "${{ inputs.branch }}" | cut -d'-' -f1,2)"
-      git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
+        if [[ ${{ inputs.susfs }} == 'true' ]]; then
+        SUSFS_BRANCH="gki-$(echo "${{ inputs.branch }}" | cut -d'-' -f1,2)"
+        git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
 
-      cd susfs4ksu
-      if [[ "$SUSFS_BRANCH" == "gki-android12-5.10" ]]; then
-      COMMIT=674f72b6f683e837d7f557704cabe00a83eeb0b4
-      elif [[ "$SUSFS_BRANCH" == "gki-android13-5.15" ]]; then
-      COMMIT=eaa5d299dd85a4230f936b94dc5dd8303f27130a
-      elif [[ "$SUSFS_BRANCH" == "gki-android14-6.1" ]]; then
-      COMMIT=971cc4e770b7f344a4df35ce92d7a859e6a1e0fd
-      elif [[ "$SUSFS_BRANCH" == "gki-android15-6.6" ]]; then
-      COMMIT=85bcfac5edc8ba7808581e8d0a3ca9c7deca78e4
-      fi
-      git checkout "$COMMIT"
-      fi
+        cd susfs4ksu
+        if [[ "$SUSFS_BRANCH" == "gki-android12-5.10" ]]; then
+        COMMIT=674f72b6f683e837d7f557704cabe00a83eeb0b4
+        elif [[ "$SUSFS_BRANCH" == "gki-android13-5.15" ]]; then
+        COMMIT=eaa5d299dd85a4230f936b94dc5dd8303f27130a
+        elif [[ "$SUSFS_BRANCH" == "gki-android14-6.1" ]]; then
+        COMMIT=971cc4e770b7f344a4df35ce92d7a859e6a1e0fd
+        elif [[ "$SUSFS_BRANCH" == "gki-android15-6.6" ]]; then
+        COMMIT=85bcfac5edc8ba7808581e8d0a3ca9c7deca78e4
+        fi
+        git checkout "$COMMIT"
+        fi

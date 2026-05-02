@@ -1,0 +1,10 @@
+name: Setup KernelSU-Next
+description: Setup KernelSU-Next
+
+runs:
+  using: composite
+
+steps:
+  - name: Set directory variables
+    shell: bash
+    run: |
