@@ -1,0 +1,23 @@
+name: Setup KernelSU-Next
+description: Setup KernelSU-Next
+
+runs:
+  using: composite
+  steps:
+    - name: Start kernel build
+      shell: bash
+      run: |
+        set -e
+        set -x
+        cd "$COMMON"
+        echo "Building the kernel..."
+
+        export PATH="$CLANG/bin:$PATH"
+
+        MAKE_ARGS="
+          ARCH=arm64 \
+          LLVM=1
+        "
+
+        make $MAKE_ARGS gki_defconfig
+        make $MAKE_ARGS -j$(nproc --all)

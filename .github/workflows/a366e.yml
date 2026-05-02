@@ -93,3 +93,6 @@ jobs:
       - name: Add KernelSU-Next
         if: inputs.ksu-next == 'true'
         uses: ./.github/actions/ksu-next.yml
+
+      - name: Build
+        uses: ./.github/actions/build.yml
