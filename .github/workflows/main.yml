@@ -91,7 +91,7 @@ on:
 
 jobs:
   build-a366e:
-    name: "Samsung-${{ matrix.version }}-${{ matrix.branch }}"
+    name: "A366E-${{ matrix.version }}-${{ matrix.branch }}"
     
     strategy:
       fail-fast: false
@@ -104,7 +104,7 @@ jobs:
     secrets: inherit
     with:
       branch: ${{ matrix.branch }}
-      android_version: ${{ matrix.android_version }}
+      version: ${{ matrix.android_version }}
       
       ksu: ${{ inputs.ksu }}
       susfs: ${{ inputs.susfs }}
