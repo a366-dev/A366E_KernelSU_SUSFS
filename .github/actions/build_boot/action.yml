@@ -1,0 +1,24 @@
+name: Build boot.img
+description: Build boot.img
+
+inputs:
+  boot_sign_key:
+    description: "The private key for signing"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Write Boot Sign Key
+      shell: bash
+      run: |
+        echo "${{ inputs.boot_sign_key }}" > $ROOT/testkey_rsa2048.pem
+
+    - name: Build Boot Image
+      shell: bash
+      run: |
+        cd $COMMON/arch/arm64/boot
+        
+        echo "[+] Building boot.img"
+        $MKBOOTIMG --header_version 4 --kernel Image --output boot.img
+        $AVBTOOL add_hash_footer --partition_name boot --partition_size $((64 * 1024 * 1024)) --image boot.img --algorithm SHA256_RSA2048 --key $ROOT/testkey_rsa2048.pem

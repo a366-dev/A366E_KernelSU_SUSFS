@@ -25,6 +25,9 @@ runs:
         tar -xJf clang.tar.xz
         rm clang.tar.xz
 
+        git clone https://android.googlesource.com/kernel/prebuilts/build-tools --depth 1 -b main
+        git clone https://android.googlesource.com/platform/system/tools/mkbootimg --depth 1 -b main
+
         git clone https://github.com/WildKernels/kernel_patches.git
         if [[ ${{ inputs.zeromount }} == 'true' ]]; then
         git clone https://github.com/jimsterino98/Super-Builders.git

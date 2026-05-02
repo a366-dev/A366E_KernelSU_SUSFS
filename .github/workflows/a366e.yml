@@ -99,3 +99,8 @@ jobs:
 
       - name: Build Kernel
         uses: ./.github/actions/build_kernel
+
+      - name: Build boot.img
+        uses: ./.github/actions/build_boot
+        with:
+          boot_sign_key: ${{ secrets.BOOT_SIGN_KEY }}

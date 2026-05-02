@@ -17,6 +17,10 @@ runs:
       run: |
         ROOT="$GITHUB_WORKSPACE"
         echo "CLANG=$ROOT/clang" >> $GITHUB_ENV
+
+        echo "AVBTOOL=$ROOT/build-tools/linux-x86/bin/avbtool" >> $GITHUB_ENV
+        echo "MKBOOTIMG=$ROOT/mkbootimg/mkbootimg.py" >> $GITHUB_ENV
+        
         if [[ ${{ inputs.susfs }} == 'true' ]]; then
           echo "SUSFS4KSU=$ROOT/susfs4ksu" >> $GITHUB_ENV
           echo "KERNEL_PATCHES=$ROOT/kernel_patches" >> $GITHUB_ENV
