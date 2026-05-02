@@ -73,3 +73,8 @@ jobs:
           branch: ${{ inputs.branch }}
           zeromount: ${{ inputs.zeromount }}
           susfs: ${{ inputs.susfs }}
+
+      - name: Clone kernel
+        uses: ./.github/actions/clone_kernel.yml
+        with:
+          kernel_branch: ${{ inputs.kernel_branch }}
