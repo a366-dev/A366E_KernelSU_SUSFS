@@ -1,0 +1,116 @@
+name: Build
+
+permissions:
+  contents: write
+  actions: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: "Choose Release Type"
+        required: true
+        type: choice
+        options:
+          - Actions
+          - Pre-Release
+          - Release
+        default: Actions
+      
+      ksu:
+        description: "Build with KSU?"
+        required: true
+        type: choice
+        options:
+          - yes
+          - no
+        default: yes
+      
+      susfs:
+        description: "Build with SUSFS?"
+        required: true
+        type: choice
+        options:
+          - yes
+          - no
+        default: yes
+      
+      bbg:
+        description: "Build with BBG?"
+        required: true
+        type: choice
+        options:
+          - yes
+          - no
+        default: yes
+      
+      zeromount:
+        description: "Add Zeromount?"
+        required: true
+        type: choice
+        options:
+          - yes
+          - no
+        default: yes
+      
+      unicode_fix:
+        description: "Add unicode fix?"
+        required: true
+        type: choice
+        options:
+          - yes
+          - no
+        default: yes
+      
+      droidspace:
+        description: "Add droidspace support?"
+        required: true
+        type: choice
+        options:
+          - yes
+          - no
+        default: yes
+      
+      ntsync:
+        description: "Add ntsync?"
+        required: true
+        type: choice
+        options:
+          - yes
+          - no
+        default: yes
+      
+      kernel_optimizations:
+        description: "Add optimizations from kernel patches repo?"
+        required: true
+        type: choice
+        options:
+          - yes
+          - no
+        default: yes
+
+jobs:
+  build-a366e:
+    name: "Samsung-${{ matrix.version }}-${{ matrix.branch }}"
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - branch: "android15-6.6-lts"
+            version: "A366EXXU4BYI7"
+
+    uses: ./.github/workflows/a366e.yml
+    secrets: inherit
+    with:
+      branch: ${{ matrix.branch }}
+      android_version: ${{ matrix.android_version }}
+      
+      ksu: ${{ inputs.ksu }}
+      susfs: ${{ inputs.susfs }}
+      bbg: ${{ inputs.bbg }}
+      zeromount: ${{ inputs.zeromount }}
+      unicode_fix: ${{ inputs.unicode_fix }}
+      droidspace: ${{ inputs.droidspace }}
+      ntsync: ${{ inputs.ntsync }}
+      kernel_optimizations: ${{ inputs.kernel_optimizations }}
