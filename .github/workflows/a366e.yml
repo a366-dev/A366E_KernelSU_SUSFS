@@ -104,3 +104,23 @@ jobs:
         uses: ./.github/actions/build_boot
         with:
           boot_sign_key: ${{ secrets.BOOT_SIGN_KEY }}
+
+      - name: Set Artifact Name
+        shell: bash
+        run: |
+          echo "Preparing Artifact Name..."
+          PRE_NAME="${{ inputs.version }}-${{ inputs.branch }}"
+          if [ "${{ inputs.ksu-next }}" = "yes" ]; then
+            PRE_NAME="KernelSU-Next-${{ env.KSU_VERSION }}-$PRE_NAME"
+          fi
+          NAME=$(PRE_NAME).img
+          echo "NAME=$NAME" >> $GITHUB_ENV
+          mv ${{ env.COMMON }}/arch/arm64/boot/boot.img ${{ env.ROOT }}/$NAME
+
+      - name: Upload boot.img
+        id: upload_img
+        uses: actions/upload-artifact@v7
+        with:
+          path: ${{ env.ROOT }}/${{ env.NAME }}
+          archive: false
+          if-no-files-found: error
