@@ -66,3 +66,10 @@ jobs:
         with:
           swap-size-gb: 25          # 10-24 GB is common for heavy LTO
         # swap-space-path: /mnt/swapfile   # optional
+
+      - name: Setup dependencies
+        uses: ./.github/actions/dependencies.yml
+        with:
+          branch: ${{ inputs.branch }}
+          zeromount: ${{ inputs.zeromount }}
+          susfs: ${{ inputs.susfs }}
