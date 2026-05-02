@@ -1,6 +1,14 @@
 <div align="center">
 
-# 🔥 Wild Kernels for Samsung
+----
+
+## ⚠️ IMPORTANT ⚠️
+#### *This is an unofficial port. Do NOT bother the upstream developer with issues related to this build. Support is provided only in this repository.*
+
+---
+
+# 🔥 WildKernel port for A366E
+#### This version is heavily adapted for the A366E. Although it diverges from the upstream WildKernel, the original implementation served as a primary guide throughout development.
 
 [![KernelSU](https://img.shields.io/badge/KernelSU-Supported-green)](https://kernelsu.org/)
 [![SUSFS](https://img.shields.io/badge/SUSFS-Integrated-orange)](https://gitlab.com/simonpunk/susfs4ksu)
@@ -11,7 +19,7 @@
 
 I am **not responsible** for bricked devices, damaged hardware, or any issues that arise from using this kernel.
 
-**Please** do thorough research and fully understand the features included in this kernel before flashing it!
+**Please** do through research and fully understand the features included in this kernel before flashing it!
 
 By flashing this kernel, **YOU** are choosing to make these modifications. If something goes wrong, **do not blame me**!
 
@@ -21,7 +29,7 @@ By flashing this kernel, **YOU** are choosing to make these modifications. If so
 
 ---
 
-## 🔧 Available Kernels
+## 🔧 Available Kernels (WK mainline)
 
 | Kernel | Repository | Status |
 |--------|------------|--------|
@@ -113,7 +121,8 @@ Flashing this kernel will void your warranty, and there is always a risk of bric
 
 ---
 <div align="center">
-## 💝 Donations
+
+## 💝 Donations ( *To the WildKernel Developers* )
 
 Any and all donations are appreciated!
 
