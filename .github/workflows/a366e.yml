@@ -7,6 +7,10 @@ permissions:
 on:
   workflow_call:
     inputs:
+      clang_version:
+        required: true
+        type: string
+
       branch:
         required: true
         type: string
@@ -70,6 +74,7 @@ jobs:
       - name: Setup dependencies
         uses: ./.github/actions/dependencies.yml
         with:
+          clang_version: ${{ inputs.clang_version }}
           branch: ${{ inputs.branch }}
           zeromount: ${{ inputs.zeromount }}
           susfs: ${{ inputs.susfs }}

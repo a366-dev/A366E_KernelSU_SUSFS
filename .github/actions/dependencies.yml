@@ -2,6 +2,9 @@ name: Clone Dependencies
 description: Clone Dependencies
 
 inputs:
+  clang_version:
+    description: 'Clang version to install'
+    required: true
   branch:
     description: 'Kernel branch (e.g., android15-6.6-lts)'
     required: true
@@ -19,6 +22,10 @@ steps:
   - name: Clone SUSFS and change commit if necessary, clone kernel patches
     shell: bash
     run: |
+      curl -L https://github.com/a366-dev/clang/releases/download/${{ inputs.clang_version }}/clang.tar.xz -o clang.tar.xz
+      tar -xJf clang.tar.xz
+      rm clang.tar.xz
+      
       git clone https://github.com/WildKernels/kernel_patches.git
       if [[ ${{ inputs.zeromount }} == 'true' ]]; then
       git clone https://github.com/jimsterino98/Super-Builders.git

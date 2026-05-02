@@ -89,6 +89,9 @@ on:
           - no
         default: yes
 
+env:
+  CLANG_VERSION: "r584948"
+
 jobs:
   build-a366e:
     name: "A366E-${{ matrix.version }}-${{ matrix.branch }}"
@@ -103,6 +106,7 @@ jobs:
     uses: ./.github/workflows/a366e.yml
     secrets: inherit
     with:
+      clang_version: ${{ env.CLANG_VERSION }}
       branch: ${{ matrix.branch }}
       version: ${{ matrix.android_version }}
       
