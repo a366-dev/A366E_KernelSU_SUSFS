@@ -78,3 +78,9 @@ jobs:
         uses: ./.github/actions/clone_kernel.yml
         with:
           kernel_branch: ${{ inputs.kernel_branch }}
+
+      - name: Setup environment variables
+        uses: ./.github/actions/env.yml
+        with:
+          susfs: ${{ inputs.susfs }}
+          zeromount: ${{ inputs.zeromount }}
