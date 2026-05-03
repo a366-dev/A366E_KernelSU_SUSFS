@@ -103,7 +103,7 @@ jobs:
     uses: ./.github/workflows/a366e.yml
     secrets: inherit
     with:
-      clang_version: "r584948"
+      clang_version: "r510928"
       branch: ${{ matrix.branch }}
       version: ${{ matrix.version }}
       
