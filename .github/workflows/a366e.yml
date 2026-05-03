@@ -113,7 +113,7 @@ jobs:
           if [ "${{ inputs.ksu-next }}" = "yes" ]; then
             PRE_NAME="KernelSU-Next-${{ env.KSU_VERSION }}-$PRE_NAME"
           fi
-          NAME=$(PRE_NAME).img
+          NAME=${PRE_NAME}.img
           echo "NAME=$NAME" >> $GITHUB_ENV
           mv ${{ env.COMMON }}/arch/arm64/boot/boot.img ${{ env.ROOT }}/$NAME
 
