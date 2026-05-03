@@ -2,7 +2,7 @@
 
 ----
 
-## ⚠️ IMPORTANT ⚠️
+## ⚠️ This branch was created just to determine what causes a kernel panic. Please avoid using this branch; it may be very unstable ⚠️
 #### *This is an unofficial port. Do NOT bother the upstream developer with issues related to this build. Support is provided only in this repository.*
 
 ---
