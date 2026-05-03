@@ -97,7 +97,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - branch: "android15-6.6-lts"
+          - branch: "android15-6.6-2025-03_r33"
             version: "A366EXXU4BYI7"
 
     uses: ./.github/workflows/a366e.yml
