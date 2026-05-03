@@ -24,7 +24,7 @@ on:
         options:
           - yes
           - no
-        default: yes
+        default: no
       
       susfs:
         description: "Build with SUSFS?"
@@ -33,7 +33,7 @@ on:
         options:
           - yes
           - no
-        default: yes
+        default: no
       
       bbg:
         description: "Build with BBG?"
@@ -42,7 +42,7 @@ on:
         options:
           - yes
           - no
-        default: yes
+        default: no
       
       zeromount:
         description: "Add Zeromount?"
@@ -51,7 +51,7 @@ on:
         options:
           - yes
           - no
-        default: yes
+        default: no
       
       unicode_fix:
         description: "Add unicode fix?"
@@ -60,7 +60,7 @@ on:
         options:
           - yes
           - no
-        default: yes
+        default: no
       
       droidspace:
         description: "Add droidspace support?"
@@ -69,7 +69,7 @@ on:
         options:
           - yes
           - no
-        default: yes
+        default: no
       
       ntsync:
         description: "Add ntsync?"
@@ -78,7 +78,7 @@ on:
         options:
           - yes
           - no
-        default: yes
+        default: no
       
       kernel_optimizations:
         description: "Add optimizations from kernel patches repo?"
@@ -87,7 +87,7 @@ on:
         options:
           - yes
           - no
-        default: yes
+        default: no
 
 jobs:
   build-a366e:
