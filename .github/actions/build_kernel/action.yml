@@ -1,5 +1,5 @@
-name: Setup KernelSU-Next
-description: Setup KernelSU-Next
+name: Build Kernel
+description: Build Kernel
 
 runs:
   using: composite
@@ -10,7 +10,7 @@ runs:
         set -e
         set -x
         cd "$COMMON"
-        echo "Building the kernel..."
+        echo "[+] Building the kernel"
 
         export PATH="$CLANG/bin:$PATH"
 

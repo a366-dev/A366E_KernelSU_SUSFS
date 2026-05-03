@@ -18,10 +18,11 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Clone SUSFS and change commit if necessary, clone kernel patches
+    - name: Clone SUSFS, clang change commit if necessary, clone kernel patches
       shell: bash
       run: |
         curl -L https://github.com/a366-dev/clang/releases/download/${{ inputs.clang_version }}/clang.tar.xz -o clang.tar.xz
+        echo "[+] Unpacking clang"
         tar -xJf clang.tar.xz
         rm clang.tar.xz
 

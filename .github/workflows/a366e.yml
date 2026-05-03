@@ -108,7 +108,7 @@ jobs:
       - name: Set Artifact Name
         shell: bash
         run: |
-          echo "Preparing Artifact Name..."
+          echo "[+] Preparing Artifact Name"
           PRE_NAME="${{ inputs.version }}-${{ inputs.branch }}"
           if [ "${{ inputs.ksu-next }}" = "yes" ]; then
             PRE_NAME="KernelSU-Next-${{ env.KSU_VERSION }}-$PRE_NAME"

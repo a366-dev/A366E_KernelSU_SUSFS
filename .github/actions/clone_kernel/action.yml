@@ -9,7 +9,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Clone SUSFS and change commit if necessary, clone kernel patches
+    - name: Clone Kernel
       shell: bash
       run: |
         git clone https://android.googlesource.com/kernel/common.git --single-branch --depth 1 -b ${{ inputs.branch }}
